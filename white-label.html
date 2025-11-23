@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan White Label - Conecta2.ai | Titanes 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Conecta2 Color Palette */
+        :root {
+            --verde-primario: #10e15c;
+            --verde-oscuro: #00b83f;
+            --verde-agua: #6af886;
+            --azul-oscuro: #0f2f42;
+            --negro: #141414;
+            --gris-claro: #d0d0cf;
+            --blanco: #fefefe;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--negro) 0%, var(--azul-oscuro) 50%, var(--negro) 100%);
+            min-height: 100vh;
+            color: var(--blanco);
+        }
+        
+        /* Animated gradient background */
+        .animated-bg {
+            background: linear-gradient(-45deg, var(--verde-oscuro), var(--verde-primario), var(--verde-agua), var(--azul-oscuro));
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glassmorphism effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(16, 225, 92, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(16, 225, 92, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(16, 225, 92, 0.2);
+        }
+        
+        /* Pulse animation for urgency badges */
+        .pulse-badge {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Tab transition */
+        .tab-content {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Counter animation */
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .animate-count {
+            animation: countUp 1s ease-out;
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--verde-primario), var(--verde-agua));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Button hover effects */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-primario));
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(16, 225, 92, 0.4);
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Progress bar animation */
+        @keyframes progressBar {
+            from { width: 0; }
+            to { width: var(--progress-width); }
+        }
+        
+        .progress-bar {
+            animation: progressBar 2s ease-out forwards;
+        }
+        
+        /* Shine effect */
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .shine-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shine-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        /* Print styles for PDF */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="brochure-content">
+        <!-- Hero Section -->
+        <div class="relative overflow-hidden py-20 px-6">
+            <div class="absolute inset-0 animated-bg opacity-20"></div>
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 20% 50%, rgba(16, 225, 92, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(106, 248, 134, 0.15) 0%, transparent 50%);"></div>
+            
+            <div class="relative max-w-7xl mx-auto">
+                <!-- Badge & Title -->
+                <div class="flex justify-between items-start mb-12">
+                    <div>
+                        <div class="inline-block glass-card px-6 py-2 rounded-full mb-6 pulse-badge shine-effect" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);">
+                            <span class="text-sm font-bold" style="color: var(--azul-oscuro);">👑 PROGRAMA DE PARTNERS EXCLUSIVO</span>
+                        </div>
+                        <h1 class="text-7xl font-black mb-4">
+                            <span class="gradient-text">White Label</span>
+                        </h1>
+                        <p class="text-3xl" style="color: var(--verde-agua);">Construye tu imperio de IA en 30 días</p>
+                    </div>
+                    
+                    <div class="text-right glass-card p-8 rounded-2xl floating">
+                        <div class="text-6xl font-black mb-2" style="color: var(--verde-primario);">
+                            $783<span class="text-2xl" style="color: var(--verde-agua);">/mes</span>
+                        </div>
+                        <div class="text-lg line-through opacity-60 mb-3">$1,099/mes regular</div>
+                        <div class="inline-block px-4 py-2 rounded-full text-sm font-bold" style="background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-primario)); color: var(--azul-oscuro);">
+                            🚀 Ahorra 29%
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="grid grid-cols-4 gap-6 mt-16">
+                    <div class="glass-card rounded-2xl p-8 text-center shine-effect">
+                        <div class="text-5xl mb-3">∞</div>
+                        <div class="text-5xl font-black mb-2 animate-count" style="color: var(--verde-primario);">∞</div>
+                        <div class="text-lg" style="color: var(--verde-agua);">Todo ilimitado</div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-8 text-center shine-effect">
+                        <div class="text-5xl mb-3">💰</div>
+                        <div class="text-5xl font-black mb-2 animate-count" style="color: var(--verde-primario);">$193K+</div>
+                        <div class="text-lg" style="color: var(--verde-agua);">Utilidad año 1</div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-8 text-center shine-effect">
+                        <div class="text-5xl mb-3">📊</div>
+                        <div class="text-5xl font-black mb-2 animate-count" style="color: var(--verde-primario);">2,055%</div>
+                        <div class="text-lg" style="color: var(--verde-agua);">ROI Año 1</div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-8 text-center shine-effect">
+                        <div class="text-5xl mb-3">👑</div>
+                        <div class="text-5xl font-black mb-2 animate-count" style="color: var(--verde-primario);">100%</div>
+                        <div class="text-lg" style="color: var(--verde-agua);">Tu marca</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation Tabs -->
+        <div class="sticky top-0 z-50 no-print" style="background: linear-gradient(90deg, var(--azul-oscuro), var(--negro)); border-top: 1px solid rgba(16, 225, 92, 0.2); border-bottom: 1px solid rgba(16, 225, 92, 0.2); backdrop-filter: blur(10px);">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex space-x-8">
+                    <button onclick="showTab('overview')" class="tab-btn py-6 px-4 font-semibold transition-all border-b-4 border-transparent hover:border-opacity-50" data-tab="overview" style="border-color: var(--verde-primario);">
+                        Overview
+                    </button>
+                    <button onclick="showTab('business')" class="tab-btn py-6 px-4 font-semibold transition-all border-b-4 border-transparent opacity-60 hover:opacity-100" data-tab="business">
+                        Modelo de Negocio
+                    </button>
+                    <button onclick="showTab('features')" class="tab-btn py-6 px-4 font-semibold transition-all border-b-4 border-transparent opacity-60 hover:opacity-100" data-tab="features">
+                        Plataforma
+                    </button>
+                    <button onclick="showTab('pricing')" class="tab-btn py-6 px-4 font-semibold transition-all border-b-4 border-transparent opacity-60 hover:opacity-100" data-tab="pricing">
+                        Inversión
+                    </button>
+                    <button onclick="showTab('projections')" class="tab-btn py-6 px-4 font-semibold transition-all border-b-4 border-transparent opacity-60 hover:opacity-100" data-tab="projections">
+                        Proyecciones
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab Content -->
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <!-- Overview Tab -->
+            <div id="overview-tab" class="tab-content">
+                <div class="space-y-8">
+                    <div class="glass-card rounded-3xl p-10" style="border: 2px solid var(--verde-primario);">
+                        <h2 class="text-4xl font-bold mb-6 flex items-center">
+                            <span class="text-5xl mr-4">🚀</span>
+                            <span class="gradient-text">No es solo software. Es tu negocio completo.</span>
+                        </h2>
+                        <p class="text-xl leading-relaxed opacity-90 mb-6">
+                            Olvídate de desarrollar tu propia plataforma de IA (meses de trabajo, $100K+ de inversión). 
+                            Te entregamos un negocio completo, listo para operar bajo <strong style="color: var(--verde-primario);">TU MARCA</strong> en 2 semanas.
+                        </p>
+                        <p class="text-xl leading-relaxed opacity-90">
+                            Plataforma white label completa + capacitación + materiales de venta + comunidad de partners + 
+                            acompañamiento marketing. Todo lo que necesitas para construir un negocio de <strong style="color: var(--verde-primario);">$100K-500K anuales</strong>.
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="glass-card rounded-2xl p-8">
+                            <div class="text-5xl mb-4">🎯</div>
+                            <h3 class="text-2xl font-bold mb-4" style="color: var(--verde-primario);">Para ti si:</h3>
+                            <ul class="space-y-3 text-lg">
+                                <li class="flex items-start">
+                                    <span class="text-2xl mr-3" style="color: var(--verde-agua);">✓</span>
+                                    <span>Tienes agencia de marketing</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-2xl mr-3" style="color: var(--verde-agua);">✓</span>
+                                    <span>Eres consultor IT/software house</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-2xl mr-3" style="color: var(--verde-agua);">✓</span>
+                                    <span>Contact center establecido</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-2xl mr-3" style="color: var(--verde-agua);">✓</span>
+                                    <span>Emprendedor con red de contactos</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="glass-card rounded-2xl p-8">
+                            <div class="text-5xl mb-4">⚡</div>
+                            <h3 class="text-2xl font-bold mb-4" style="color: var(--verde-primario);">Lo que NO necesitas:</h3>
+                            <ul class="space-y-3 text-lg">
+                                <li class="flex items-start">
+                                    <span class="text-2xl mr-3" style="color: #ef4444;">✗</span>
+                                    <span>Equipo de desarrollo</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-2xl mr-3" style="color: #ef4444;">✗</span>
+                                    <span>Infraestructura IT</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-2xl mr-3" style="color: #ef4444;">✗</span>
+                                    <span>Conocimiento técnico avanzado</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-2xl mr-3" style="color: #ef4444;">✗</span>
+                                    <span>Inversión de $100K+</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="glass-card rounded-2xl p-8 shine-effect" style="background: linear-gradient(135deg, rgba(16, 225, 92, 0.2), rgba(0, 184, 63, 0.1)); border: 2px solid var(--verde-primario);">
+                            <div class="text-5xl mb-4">💰</div>
+                            <h3 class="text-2xl font-bold mb-4" style="color: var(--verde-primario);">Resultado típico año 1:</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="text-sm opacity-80 mb-1">Clientes activos</div>
+                                    <div class="text-4xl font-black" style="color: var(--verde-primario);">15-25</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm opacity-80 mb-1">MRR (Ingresos recurrentes)</div>
+                                    <div class="text-4xl font-black" style="color: var(--verde-primario);">$22-37K</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm opacity-80 mb-1">Utilidad neta anual</div>
+                                    <div class="text-4xl font-black" style="color: var(--verde-primario);">$193K+</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Business Model Tab -->
+            <div id="business-tab" class="tab-content hidden">
+                <div class="space-y-8">
+                    <div class="glass-card rounded-3xl p-10" style="border: 2px solid var(--verde-primario);">
+                        <h2 class="text-4xl font-bold mb-8 text-center gradient-text">💸 Cómo Ganas Dinero</h2>
+                        
+                        <div class="grid md:grid-cols-2 gap-10 mb-10">
+                            <div>
+                                <h3 class="text-3xl font-bold mb-6" style="color: #ef4444;">Tus Costos</h3>
+                                <div class="glass-card rounded-2xl p-8 space-y-4">
+                                    <div class="flex justify-between items-center text-lg pb-3 border-b border-white border-opacity-10">
+                                        <span>Plan White Label</span>
+                                        <span class="font-bold text-2xl" style="color: #fca5a5;">$783/mes</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-lg pb-3 border-b border-white border-opacity-10">
+                                        <span>Minutos incluidos</span>
+                                        <span class="font-bold text-2xl" style="color: var(--verde-primario);">2,000/mes</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-lg pb-3">
+                                        <span>Minuto adicional</span>
+                                        <span class="font-bold text-2xl" style="color: #fbbf24;">$0.10</span>
+                                    </div>
+                                    <div class="text-sm opacity-80 mt-4 p-4 rounded-lg" style="background: rgba(16, 225, 92, 0.1);">
+                                        💡 Descuentos automáticos desde 100K mins/mes (-10% a -20%)
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-3xl font-bold mb-6" style="color: var(--verde-primario);">Tus Ingresos</h3>
+                                <div class="glass-card rounded-2xl p-8 space-y-4">
+                                    <div class="flex justify-between items-center text-lg pb-3 border-b border-white border-opacity-10">
+                                        <span>Precio sugerido (por cliente)</span>
+                                        <span class="font-bold text-2xl" style="color: var(--verde-primario);">$1,500/mes</span>
+                                    </div>
+                                    <div class="text-sm opacity-80">
+                                        Tú defines tu precio según el mercado
+                                    </div>
+                                    <div class="border-t pt-4 mt-4" style="border-color: var(--verde-primario);">
+                                        <div class="flex justify-between items-center text-xl mb-2">
+                                            <span class="font-bold">Margen por cliente</span>
+                                            <span class="font-black text-3xl" style="color: var(--verde-primario);">~$600/mes</span>
+                                        </div>
+                                        <div class="text-sm opacity-80 mt-4 p-4 rounded-lg" style="background: linear-gradient(135deg, rgba(16, 225, 92, 0.2), rgba(0, 184, 63, 0.1));">
+                                            💰 Con 25 clientes = <strong style="color: var(--verde-primario);">$15K/mes utilidad pura</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card rounded-2xl p-8" style="border: 2px solid var(--verde-primario);">
+                            <h3 class="text-3xl font-bold mb-6 text-center" style="color: var(--verde-primario);">🎯 Estrategias de Pricing Probadas</h3>
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <div class="glass-card rounded-xl p-6 text-center">
+                                    <div class="font-bold mb-3" style="color: var(--verde-agua);">Plan Básico</div>
+                                    <div class="text-4xl font-black mb-3" style="color: var(--verde-primario);">$999/mes</div>
+                                    <div class="text-sm opacity-80">Hasta 2,000 minutos</div>
+                                </div>
+                                <div class="glass-card rounded-xl p-6 text-center shine-effect" style="border: 2px solid #fbbf24;">
+                                    <div class="font-bold mb-3" style="color: #fbbf24;">Plan Pro ⭐</div>
+                                    <div class="text-4xl font-black mb-3" style="color: var(--verde-primario);">$1,999/mes</div>
+                                    <div class="text-sm opacity-80">Hasta 5,000 minutos</div>
+                                </div>
+                                <div class="glass-card rounded-xl p-6 text-center">
+                                    <div class="font-bold mb-3" style="color: #a855f7;">Plan Enterprise</div>
+                                    <div class="text-4xl font-black mb-3" style="color: var(--verde-primario);">$3,999/mes</div>
+                                    <div class="text-sm opacity-80">Hasta 15,000 minutos</div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-6 p-4 rounded-lg" style="background: rgba(16, 225, 92, 0.1);">
+                                <p class="text-lg">💡 <strong>Tip:</strong> Muchos partners exitosos cobran por industria (Real Estate: $1,200, E-learning: $1,500, E-commerce: $2,000)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Features Tab -->
+            <div id="features-tab" class="tab-content hidden">
+                <div class="text-center mb-12">
+                    <h2 class="text-5xl font-black mb-4 gradient-text">Plataforma Completamente Ilimitada</h2>
+                    <p class="text-2xl opacity-80">Todo lo que Enterprise tiene + mucho más</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    <div class="glass-card rounded-2xl p-8 hover:scale-105 transition-transform duration-300">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="text-5xl">∞</div>
+                            <div class="text-4xl font-black" style="color: var(--verde-primario);">∞</div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3" style="color: var(--verde-primario);">Asistentes ILIMITADOS</h3>
+                        <p class="text-lg opacity-90">Crea miles si necesitas. Sin restricciones. Cada cliente tuyo puede tener sus propios asistentes.</p>
+                    </div>
+                    
+                    <div class="glass-card rounded-2xl p-8 hover:scale-105 transition-transform duration-300">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="text-5xl">👥</div>
+                            <div class="text-4xl font-black" style="color: var(--verde-primario);">∞</div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3" style="color: var(--verde-primario);">Clientes ILIMITADOS</h3>
+                        <p class="text-lg opacity-90">Onboardea 5, 50 o 500 clientes. La plataforma escala contigo sin costos adicionales.</p>
+                    </div>
+                    
+                    <div class="glass-card rounded-2xl p-8 hover:scale-105 transition-transform duration-300">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="text-5xl">⚡</div>
+                            <div class="text-4xl font-black" style="color: var(--verde-primario);">∞</div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3" style="color: var(--verde-primario);">Tokens ILIMITADOS</h3>
+                        <p class="text-lg opacity-90">Automatizaciones complejas sin límites. Integra todo lo que necesites sin preocuparte por costos.</p>
+                    </div>
+                    
+                    <div class="glass-card rounded-2xl p-8 hover:scale-105 transition-transform duration-300 shine-effect">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="text-5xl">👑</div>
+                            <div class="text-4xl font-black" style="color: var(--verde-primario);">100%</div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3" style="color: var(--verde-primario);">100% Tu Marca</h3>
+                        <p class="text-lg opacity-90">Logo, colores, dominio, emails corporativos. Tus clientes NUNCA verán Conecta2.ai.</p>
+                    </div>
+                    
+                    <div class="glass-card rounded-2xl p-8 hover:scale-105 transition-transform duration-300">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="text-5xl">🛡️</div>
+                            <div class="text-4xl font-black" style="color: var(--verde-primario);">24/7</div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3" style="color: var(--verde-primario);">Soporte 24/7 Premium</h3>
+                        <p class="text-lg opacity-90">Respuesta <24h garantizada. WhatsApp directo. Nunca estarás bloqueado por un problema técnico.</p>
+                    </div>
+                    
+                    <div class="glass-card rounded-2xl p-8 hover:scale-105 transition-transform duration-300">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="text-5xl">🎯</div>
+                            <div class="text-4xl font-black" style="color: var(--verde-primario);">20h</div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3" style="color: var(--verde-primario);">20h Soporte Dedicado</h3>
+                        <p class="text-lg opacity-90">Vs 10h de Enterprise. Más tiempo para crear tus primeros asistentes y optimizar estrategia.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-10" style="border: 2px solid var(--verde-primario);">
+                    <h3 class="text-3xl font-bold mb-8 text-center gradient-text">🎁 Bonos Exclusivos Anuales (Valor $13,900)</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="flex items-center justify-between glass-card rounded-xl p-6">
+                            <span class="flex items-center text-lg">
+                                <span class="text-2xl mr-4" style="color: var(--verde-primario);">✓</span>
+                                <span class="font-semibold">Soporte Premium 24/7</span>
+                            </span>
+                            <span class="text-2xl font-bold" style="color: var(--verde-primario);">$3,600</span>
+                        </div>
+                        <div class="flex items-center justify-between glass-card rounded-xl p-6">
+                            <span class="flex items-center text-lg">
+                                <span class="text-2xl mr-4" style="color: var(--verde-primario);">✓</span>
+                                <span class="font-semibold">20h Soporte Dedicado</span>
+                            </span>
+                            <span class="text-2xl font-bold" style="color: var(--verde-primario);">$3,000</span>
+                        </div>
+                        <div class="flex items-center justify-between glass-card rounded-xl p-6">
+                            <span class="flex items-center text-lg">
+                                <span class="text-2xl mr-4" style="color: var(--verde-primario);">✓</span>
+                                <span class="font-semibold">3 Asistentes Creados</span>
+                            </span>
+                            <span class="text-2xl font-bold" style="color: var(--verde-primario);">$1,500</span>
+                        </div>
+                        <div class="flex items-center justify-between glass-card rounded-xl p-6">
+                            <span class="flex items-center text-lg">
+                                <span class="text-2xl mr-4" style="color: var(--verde-primario);">✓</span>
+                                <span class="font-semibold">Comunidad Partners</span>
+                            </span>
+                            <span class="text-2xl font-bold" style="color: var(--verde-primario);">$1,200</span>
+                        </div>
+                        <div class="flex items-center justify-between glass-card rounded-xl p-6">
+                            <span class="flex items-center text-lg">
+                                <span class="text-2xl mr-4" style="color: var(--verde-primario);">✓</span>
+                                <span class="font-semibold">Webinars Quincenales</span>
+                            </span>
+                            <span class="text-2xl font-bold" style="color: var(--verde-primario);">$1,800</span>
+                        </div>
+                        <div class="flex items-center justify-between glass-card rounded-xl p-6">
+                            <span class="flex items-center text-lg">
+                                <span class="text-2xl mr-4" style="color: var(--verde-primario);">✓</span>
+                                <span class="font-semibold">Templates Negocio</span>
+                            </span>
+                            <span class="text-2xl font-bold" style="color: var(--verde-primario);">$800</span>
+                        </div>
+                        <div class="flex items-center justify-between glass-card rounded-xl p-6 md:col-span-2">
+                            <span class="flex items-center text-lg">
+                                <span class="text-2xl mr-4" style="color: var(--verde-primario);">✓</span>
+                                <span class="font-semibold">Acompañamiento Marketing</span>
+                            </span>
+                            <span class="text-2xl font-bold" style="color: var(--verde-primario);">$2,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pricing Tab -->
+            <div id="pricing-tab" class="tab-content hidden">
+                <div class="max-w-4xl mx-auto">
+                    <div class="glass-card rounded-3xl p-12 mb-12" style="border: 2px solid var(--verde-primario);">
+                        <div class="text-center mb-12">
+                            <h2 class="text-5xl font-black mb-4 gradient-text">Inversión Titanes 2025</h2>
+                            <p class="text-xl opacity-80">La mejor decisión de negocio que tomarás este año</p>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-8 mb-12">
+                            <div class="glass-card rounded-2xl p-8">
+                                <div class="text-xl opacity-60 mb-3">Precio Regular</div>
+                                <div class="text-5xl font-bold line-through opacity-40 mb-4">$13,188/año</div>
+                                <div class="text-lg opacity-60">($1,099/mes)</div>
+                            </div>
+                            
+                            <div class="rounded-2xl p-8 relative overflow-hidden shine-effect" style="background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-primario));">
+                                <div class="absolute top-0 right-0 bg-yellow-400 text-black text-sm font-bold px-4 py-2 rounded-bl-2xl">
+                                    AHORRA $3,792
+                                </div>
+                                <div class="text-xl mb-3" style="color: var(--azul-oscuro);">Precio Titanes 2025</div>
+                                <div class="text-6xl font-black mb-2" style="color: var(--azul-oscuro);">$9,396/año</div>
+                                <div class="text-2xl font-bold" style="color: var(--azul-oscuro);">Solo $783/mes efectivo</div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card rounded-2xl p-8 mb-12">
+                            <h3 class="text-2xl font-bold mb-6" style="color: var(--verde-primario);">Desglose de descuentos:</h3>
+                            <div class="space-y-4 text-lg">
+                                <div class="flex justify-between items-center pb-2">
+                                    <span>Precio base anual</span>
+                                    <span class="font-mono font-bold">$13,188</span>
+                                </div>
+                                <div class="flex justify-between items-center pb-2" style="color: var(--verde-primario);">
+                                    <span>Descuento Titanes (-25%)</span>
+                                    <span class="font-mono font-bold">-$3,297</span>
+                                </div>
+                                <div class="flex justify-between items-center pb-2" style="color: var(--verde-primario);">
+                                    <span>Descuento Black Friday (-5%)</span>
+                                    <span class="font-mono font-bold">-$494</span>
+                                </div>
+                                <div class="border-t pt-4 mt-4" style="border-color: var(--verde-primario);">
+                                    <div class="flex justify-between items-center text-2xl font-bold">
+                                        <span>Total a pagar</span>
+                                        <span class="font-mono" style="color: var(--verde-primario);">$9,396</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center glass-card rounded-2xl p-10" style="background: linear-gradient(135deg, rgba(16, 225, 92, 0.2), rgba(0, 184, 63, 0.1)); border: 2px solid var(--verde-primario);">
+                            <div class="text-lg mb-3 opacity-90">Recuperas tu inversión en:</div>
+                            <div class="text-7xl font-black mb-4" style="color: var(--verde-primario);">~3 meses</div>
+                            <div class="text-xl opacity-90">Con solo 12-15 clientes @ $1,500/mes</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="inline-block glass-card px-8 py-4 rounded-2xl pulse-badge" style="border: 2px solid #ef4444;">
+                            <div class="text-sm mb-2" style="color: #fca5a5;">⏰ Solo 15 partners disponibles</div>
+                            <div class="text-2xl font-bold">Válido hasta 25 Nov, 11:59 PM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projections Tab -->
+            <div id="projections-tab" class="tab-content hidden">
+                <div class="max-w-6xl mx-auto space-y-12">
+                    <div class="text-center mb-12">
+                        <h2 class="text-5xl font-black mb-4 gradient-text">Proyección Realista - Año 1</h2>
+                        <p class="text-2xl opacity-80">Basado en partners actuales exitosos</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div class="glass-card rounded-2xl p-8 hover:scale-105 transition-transform">
+                            <div class="text-lg font-semibold mb-4" style="color: var(--verde-agua);">Mes 1-3</div>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="text-sm opacity-70">Clientes</div>
+                                    <div class="text-3xl font-black" style="color: var(--verde-primario);">3-5</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm opacity-70">MRR</div>
+                                    <div class="text-2xl font-bold" style="color: var(--verde-primario);">$4.5K</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm opacity-70">Utilidad</div>
+                                    <div class="text-xl font-bold" style="color: var(--verde-agua);">$3.1K/mes</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card rounded-2xl p-8 hover:scale-105 transition-transform">
+                            <div class="text-lg font-semibold mb-4" style="color: var(--verde-agua);">Mes 4-6</div>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="text-sm opacity-70">Clientes</div>
+                                    <div class="text-3xl font-black" style="color: var(--verde-primario);">8-12</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm opacity-70">MRR</div>
+                                    <div class="text-2xl font-bold" style="color: var(--verde-primario);">$12K</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm opacity-70">Utilidad</div>
+                                    <div class="text-xl font-bold" style="color: var(--verde-agua);">$10.2K/mes</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card rounded-2xl p-8 hover:scale-105 transition-transform">
+                            <div class="text-lg font-semibold mb-4" style="color: var(--verde-agua);">Mes 7-9</div>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="text-sm opacity-70">Clientes</div>
+                                    <div class="text-3xl font-black" style="color: var(--verde-primario);">15-20</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm opacity-70">MRR</div>
+                                    <div class="text-2xl font-bold" style="color: var(--verde-primario);">$22.5K</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm opacity-70">Utilidad</div>
+                                    <div class="text-xl font-bold" style="color: var(--verde-agua);">$20K/mes</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card rounded-2xl p-8 hover:scale-105 transition-transform shine-effect" style="border: 2px solid var(--verde-primario);">
+                            <div class="text-lg font-semibold mb-4" style="color: var(--verde-primario);">Mes 10-12</div>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="text-sm opacity-70">Clientes</div>
+                                    <div class="text-3xl font-black" style="color: var(--verde-primario);">25-30</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm opacity-70">MRR</div>
+                                    <div class="text-2xl font-bold" style="color: var(--verde-primario);">$37.5K</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm opacity-70">Utilidad</div>
+                                    <div class="text-xl font-bold" style="color: var(--verde-agua);">$34K/mes</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-3xl p-12" style="background: linear-gradient(135deg, rgba(16, 225, 92, 0.2), rgba(0, 184, 63, 0.1)); border: 2px solid var(--verde-primario);">
+                        <h3 class="text-4xl font-black mb-10 text-center gradient-text">Resultado Final Año 1</h3>
+                        <div class="grid md:grid-cols-3 gap-8 mb-10">
+                            <div class="text-center">
+                                <div class="text-lg opacity-80 mb-2">Ingresos Totales</div>
+                                <div class="text-6xl font-black" style="color: var(--verde-primario);">$214K</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg opacity-80 mb-2">Costos Totales</div>
+                                <div class="text-6xl font-black" style="color: #fca5a5;">$21K</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg opacity-80 mb-2">Utilidad Neta</div>
+                                <div class="text-7xl font-black" style="color: var(--verde-primario);">$193K+</div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="glass-card rounded-2xl p-8 text-center">
+                                <div class="text-7xl font-black mb-3" style="color: var(--verde-primario);">2,055%</div>
+                                <div class="text-2xl font-bold mb-2" style="color: var(--verde-agua);">ROI Año 1</div>
+                                <div class="text-lg opacity-80">Por cada $1 invertido, ganas $20.55</div>
+                            </div>
+                            <div class="glass-card rounded-2xl p-8 text-center">
+                                <div class="text-7xl font-black mb-3" style="color: var(--verde-primario);">3</div>
+                                <div class="text-2xl font-bold mb-2" style="color: var(--verde-agua);">Meses Payback</div>
+                                <div class="text-lg opacity-80">Recuperas inversión completa en trimestre 1</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-2xl p-8">
+                        <h3 class="text-3xl font-bold mb-6" style="color: var(--verde-primario);">📈 Después del Año 1:</h3>
+                        <p class="text-xl mb-6 opacity-90">
+                            Con infraestructura establecida y clientes recurrentes, el crecimiento se acelera:
+                        </p>
+                        <ul class="space-y-4 text-lg">
+                            <li class="flex items-start">
+                                <span class="text-3xl mr-4" style="color: var(--verde-primario);">★</span>
+                                <span><strong style="color: var(--verde-primario);">Año 2:</strong> 40-60 clientes, $50K-80K MRR, $500K+ utilidad anual</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-3xl mr-4" style="color: var(--verde-primario);">★</span>
+                                <span><strong style="color: var(--verde-primario);">Año 3:</strong> 80-100+ clientes, $120K+ MRR, $1M+ utilidad anual</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-3xl mr-4" style="color: var(--verde-primario);">★</span>
+                                <span><strong style="color: var(--verde-primario);">Opción de salida:</strong> Múltiplos de 4-6X MRR anual para venta del negocio</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="py-20 px-6 relative overflow-hidden">
+            <div class="absolute inset-0 animated-bg"></div>
+            <div class="relative max-w-5xl mx-auto text-center">
+                <h2 class="text-6xl font-black mb-6" style="color: var(--azul-oscuro);">
+                    ¿Listo para construir tu imperio de IA?
+                </h2>
+                <p class="text-2xl mb-10" style="color: var(--azul-oscuro); opacity: 0.8;">
+                    Solo 15 spots de partner disponibles en Titanes 2025
+                </p>
+                <div class="flex justify-center space-x-6 mb-10">
+                    <button onclick="window.location.href='https://wa.me/573008853322?text=Hola!%20Quiero%20información%20sobre%20el%20Plan%20White%20Label%20de%20Titanes%202025'" class="btn-primary px-10 py-5 rounded-2xl font-bold text-xl flex items-center" style="color: var(--azul-oscuro);">
+                        👑 Aplicar Ahora
+                        <span class="ml-3">→</span>
+                    </button>
+                    <button onclick="downloadPDF()" class="glass-card px-10 py-5 rounded-2xl font-bold text-xl border-2 hover:scale-105 transition-transform" style="border-color: var(--azul-oscuro); color: var(--azul-oscuro);">
+                        📥 Descargar PDF
+                    </button>
+                </div>
+                <div class="text-lg mb-6" style="color: var(--azul-oscuro); opacity: 0.8;">
+                    📧 info@conecta2.ai | 📱 +57 300 885 3322 | 🌐 www.conecta2.ai
+                </div>
+                <div class="inline-block px-8 py-3 rounded-full font-bold text-lg" style="background: #fbbf24; color: var(--azul-oscuro);">
+                    ⚠️ Proceso de selección: No aceptamos a todos los aplicantes
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Tab switching functionality
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            
+            document.getElementById(tabName + '-tab').classList.remove('hidden');
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('border-opacity-100');
+                btn.classList.add('opacity-60', 'border-transparent');
+                btn.style.borderColor = 'transparent';
+            });
+            
+            const activeBtn = document.querySelector(`[data-tab="${tabName}"]`);
+            activeBtn.classList.remove('opacity-60', 'border-transparent');
+            activeBtn.classList.add('border-opacity-100');
+            activeBtn.style.borderColor = 'var(--verde-primario)';
+        }
+        
+        // Animated counter on scroll
+        function animateCounters() {
+            const counters = document.querySelectorAll('.animate-count');
+            counters.forEach(counter => {
+                counter.style.animation = 'none';
+                setTimeout(() => {
+                    counter.style.animation = 'countUp 1s ease-out';
+                }, 100);
+            });
+        }
+        
+        // PDF Download function
+        function downloadPDF() {
+            const element = document.getElementById('brochure-content');
+            const opt = {
+                margin: 0,
+                filename: 'Conecta2-WhiteLabel-Titanes2025.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            
+            html2pdf().set(opt).from(element).save();
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            animateCounters();
+            
+            // Animate on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.glass-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease-out';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

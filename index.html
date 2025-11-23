@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conecta2.ai - Titanes 2025 | Planes Especiales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Conecta2 Color Palette */
+        :root {
+            --verde-primario: #10e15c;
+            --verde-oscuro: #00b83f;
+            --verde-agua: #6af886;
+            --azul-oscuro: #0f2f42;
+            --negro: #141414;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--negro) 0%, var(--azul-oscuro) 50%, var(--negro) 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        /* Animated gradient background */
+        .animated-bg {
+            background: linear-gradient(-45deg, var(--verde-oscuro), var(--verde-primario), var(--verde-agua), var(--azul-oscuro));
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Pulse animation */
+        .pulse-glow {
+            animation: pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% {
+                opacity: 1;
+                box-shadow: 0 0 50px rgba(16, 225, 92, 0.5);
+            }
+            50% {
+                opacity: 0.8;
+                box-shadow: 0 0 80px rgba(16, 225, 92, 0.8);
+            }
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Card hover effects */
+        .plan-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(16, 225, 92, 0.3);
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-20px) scale(1.05);
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid var(--verde-primario);
+            box-shadow: 0 30px 60px rgba(16, 225, 92, 0.3);
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--verde-primario), var(--verde-agua));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Button effects */
+        .btn-cta {
+            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-primario));
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-cta:hover::before {
+            left: 100%;
+        }
+        
+        .btn-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(16, 225, 92, 0.5);
+        }
+        
+        /* Particle effects */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            background: var(--verde-primario);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: particleFloat 20s infinite;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.2;
+            }
+            90% {
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        /* Shine effect */
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .shine-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shine-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 3s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle effects -->
+    <div class="particles">
+        <div class="particle" style="width: 3px; height: 3px; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="width: 5px; height: 5px; left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="width: 4px; height: 4px; left: 50%; animation-delay: 4s;"></div>
+        <div class="particle" style="width: 6px; height: 6px; left: 70%; animation-delay: 6s;"></div>
+        <div class="particle" style="width: 3px; height: 3px; left: 90%; animation-delay: 8s;"></div>
+    </div>
+    
+    <div class="relative min-h-screen">
+        <!-- Background effects -->
+        <div class="absolute inset-0 animated-bg opacity-20"></div>
+        <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 50%, rgba(16, 225, 92, 0.15) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(106, 248, 134, 0.15) 0%, transparent 50%);"></div>
+        
+        <div class="relative container mx-auto px-6 py-16">
+            <!-- Logo & Header -->
+            <div class="text-center mb-16 floating">
+                <div class="inline-block mb-8">
+                    <h1 class="text-8xl font-black gradient-text mb-4">CONECTA2.AI</h1>
+                    <div class="text-2xl opacity-90">Agentes de IA Conversacional que 3X tus ventas</div>
+                </div>
+                
+                <div class="inline-block px-8 py-3 rounded-full pulse-glow shine-effect" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);">
+                    <span class="text-xl font-bold" style="color: var(--azul-oscuro);">🏆 TITANES 2025 - OFERTAS EXCLUSIVAS</span>
+                </div>
+            </div>
+            
+            <!-- Countdown Timer -->
+            <div class="text-center mb-16">
+                <div class="inline-block bg-white bg-opacity-5 backdrop-blur-lg rounded-2xl px-12 py-6 border-2" style="border-color: #ef4444;">
+                    <div class="text-sm mb-2" style="color: #fca5a5;">⏰ La oferta termina en:</div>
+                    <div class="text-5xl font-black mb-2">25 de Noviembre, 11:59 PM</div>
+                    <div class="text-lg opacity-80">No pierdas esta oportunidad única</div>
+                </div>
+            </div>
+            
+            <!-- Main CTA -->
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-6">Elige el Plan Perfecto para Ti</h2>
+                <p class="text-2xl opacity-90 max-w-3xl mx-auto">
+                    Descuentos de hasta 29% solo durante Titanes 2025. 
+                    Únete a las empresas que ya están multiplicando sus conversiones con IA.
+                </p>
+            </div>
+            
+            <!-- Plans Grid -->
+            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto mb-20">
+                <!-- Enterprise Plan Card -->
+                <div class="plan-card rounded-3xl p-10 cursor-pointer" onclick="window.location.href='enterprise.html'">
+                    <div class="mb-8">
+                        <div class="inline-block px-4 py-2 rounded-full text-sm font-bold mb-6" style="background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-primario)); color: var(--azul-oscuro);">
+                            PLAN EMPRESAS
+                        </div>
+                        <h3 class="text-5xl font-black mb-4 gradient-text">Enterprise</h3>
+                        <p class="text-xl opacity-90 mb-6">Para empresas que quieren automatizar sus ventas</p>
+                        <div class="flex items-baseline mb-2">
+                            <span class="text-6xl font-black" style="color: var(--verde-primario);">$355</span>
+                            <span class="text-2xl ml-2" style="color: var(--verde-agua);">/mes</span>
+                        </div>
+                        <div class="text-lg line-through opacity-60 mb-4">$499/mes regular</div>
+                        <div class="inline-block px-4 py-2 rounded-full text-sm font-bold" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5;">
+                            🔥 Ahorra $1,722/año
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-3" style="color: var(--verde-primario);">✓</span>
+                            <span>100 Asistentes de IA</span>
+                        </div>
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-3" style="color: var(--verde-primario);">✓</span>
+                            <span>20 Líneas Telefónicas</span>
+                        </div>
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-3" style="color: var(--verde-primario);">✓</span>
+                            <span>10 Voces Clonadas</span>
+                        </div>
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-3" style="color: var(--verde-primario);">✓</span>
+                            <span>1,000 Minutos Incluidos</span>
+                        </div>
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-3" style="color: var(--verde-primario);">✓</span>
+                            <span>Soporte Premium <24h</span>
+                        </div>
+                    </div>
+                    
+                    <div class="rounded-xl p-6 mb-8" style="background: linear-gradient(135deg, rgba(16, 225, 92, 0.2), rgba(0, 184, 63, 0.1));">
+                        <div class="text-sm opacity-80 mb-2">ROI Promedio</div>
+                        <div class="text-4xl font-black" style="color: var(--verde-primario);">20-80X</div>
+                    </div>
+                    
+                    <button class="w-full btn-cta py-5 rounded-2xl font-bold text-xl" style="color: var(--azul-oscuro);">
+                        Ver Plan Enterprise →
+                    </button>
+                    
+                    <div class="text-center mt-6 text-sm opacity-70">
+                        ✨ Ideal para: Infoproductores, Servicios, E-commerce
+                    </div>
+                </div>
+                
+                <!-- White Label Plan Card -->
+                <div class="plan-card rounded-3xl p-10 cursor-pointer shine-effect" onclick="window.location.href='white-label.html'" style="border: 3px solid var(--verde-primario);">
+                    <div class="absolute top-0 right-0 px-6 py-3 rounded-bl-2xl rounded-tr-2xl font-bold" style="background: #fbbf24; color: var(--azul-oscuro);">
+                        👑 MÁS POPULAR
+                    </div>
+                    <div class="mb-8 mt-8">
+                        <div class="inline-block px-4 py-2 rounded-full text-sm font-bold mb-6" style="background: linear-gradient(135deg, #fbbf24, #f59e0b); color: var(--azul-oscuro);">
+                            PROGRAMA DE PARTNERS
+                        </div>
+                        <h3 class="text-5xl font-black mb-4 gradient-text">White Label</h3>
+                        <p class="text-xl opacity-90 mb-6">Construye tu propio negocio de IA</p>
+                        <div class="flex items-baseline mb-2">
+                            <span class="text-6xl font-black" style="color: var(--verde-primario);">$783</span>
+                            <span class="text-2xl ml-2" style="color: var(--verde-agua);">/mes</span>
+                        </div>
+                        <div class="text-lg line-through opacity-60 mb-4">$1,099/mes regular</div>
+                        <div class="inline-block px-4 py-2 rounded-full text-sm font-bold" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5;">
+                            🚀 Ahorra $3,792/año
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-3" style="color: var(--verde-primario);">✓</span>
+                            <span><strong>TODO ILIMITADO</strong> (Asistentes, Clientes, Tokens)</span>
+                        </div>
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-3" style="color: var(--verde-primario);">✓</span>
+                            <span>100% Tu Marca (White Label)</span>
+                        </div>
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-3" style="color: var(--verde-primario);">✓</span>
+                            <span>2,000 Minutos Incluidos</span>
+                        </div>
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-3" style="color: var(--verde-primario);">✓</span>
+                            <span>Soporte 24/7 + 20h Dedicadas</span>
+                        </div>
+                        <div class="flex items-center text-lg">
+                            <span class="text-2xl mr-3" style="color: var(--verde-primario);">✓</span>
+                            <span>Comunidad + Webinars + Templates</span>
+                        </div>
+                    </div>
+                    
+                    <div class="rounded-xl p-6 mb-8" style="background: linear-gradient(135deg, rgba(16, 225, 92, 0.2), rgba(0, 184, 63, 0.1));">
+                        <div class="text-sm opacity-80 mb-2">Utilidad Año 1</div>
+                        <div class="text-4xl font-black" style="color: var(--verde-primario);">$193K+</div>
+                    </div>
+                    
+                    <button class="w-full btn-cta py-5 rounded-2xl font-bold text-xl pulse-glow" style="color: var(--azul-oscuro);">
+                        Ver Plan White Label →
+                    </button>
+                    
+                    <div class="text-center mt-6 text-sm opacity-70">
+                        👑 Ideal para: Agencias, Consultores, Contact Centers
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Proof -->
+            <div class="max-w-4xl mx-auto mb-20">
+                <div class="bg-white bg-opacity-5 backdrop-blur-lg rounded-3xl p-10 border" style="border-color: var(--verde-primario);">
+                    <h3 class="text-3xl font-bold text-center mb-8 gradient-text">Métricas Reales de Conecta2.ai</h3>
+                    <div class="grid md:grid-cols-4 gap-8 text-center">
+                        <div>
+                            <div class="text-5xl font-black mb-2" style="color: var(--verde-primario);">30K+</div>
+                            <div class="text-lg opacity-80">Llamadas procesadas</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-black mb-2" style="color: var(--verde-primario);">85%</div>
+                            <div class="text-lg opacity-80">Tasa de éxito</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-black mb-2" style="color: var(--verde-primario);">100%</div>
+                            <div class="text-lg opacity-80">Retención clientes</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-black mb-2" style="color: var(--verde-primario);">$2.7K</div>
+                            <div class="text-lg opacity-80">ARPU promedio</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Final -->
+            <div class="text-center">
+                <h3 class="text-4xl font-bold mb-6">¿Necesitas ayuda para elegir?</h3>
+                <p class="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+                    Nuestro equipo está disponible para ayudarte a encontrar el plan perfecto según tus necesidades
+                </p>
+                <div class="flex justify-center space-x-6">
+                    <button onclick="window.location.href='https://wa.me/573008853322?text=Hola!%20Necesito%20ayuda%20para%20elegir%20el%20plan%20ideal%20en%20Titanes%202025'" class="btn-cta px-10 py-5 rounded-2xl font-bold text-xl flex items-center" style="color: var(--azul-oscuro);">
+                        📱 Contactar por WhatsApp
+                    </button>
+                    <button onclick="window.location.href='mailto:info@conecta2.ai?subject=Consulta%20Titanes%202025'" class="bg-white bg-opacity-10 backdrop-blur-lg px-10 py-5 rounded-2xl font-bold text-xl border-2 hover:bg-opacity-20 transition-all" style="border-color: var(--verde-primario);">
+                        📧 Enviar Email
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="text-center mt-20 opacity-80">
+                <div class="text-lg mb-4">
+                    📧 info@conecta2.ai | 📱 +57 300 885 3322 | 🌐 www.conecta2.ai
+                </div>
+                <div class="text-sm">
+                    Conecta2.ai © 2025 - Simplificalo Consulting LLC
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add hover sound effects (optional)
+        document.querySelectorAll('.plan-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-20px) scale(1.05)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
