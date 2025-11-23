@@ -135,16 +135,6 @@
             animation: float 3s ease-in-out infinite;
         }
         
-        /* Progress bar animation */
-        @keyframes progressBar {
-            from { width: 0; }
-            to { width: var(--progress-width); }
-        }
-        
-        .progress-bar {
-            animation: progressBar 2s ease-out forwards;
-        }
-        
         /* Shine effect */
         @keyframes shine {
             0% { left: -100%; }
@@ -205,14 +195,37 @@
             width: auto;
         }
         
-        /* Hide scrollbar for mobile menu */
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        /* Logo fallback text */
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            background: linear-gradient(135deg, var(--verde-primario), var(--verde-agua));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
+        /* Mobile menu - 2 rows for 5 buttons */
+        .mobile-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+        
+        .mobile-menu-grid button:last-child {
+            grid-column: 1 / -1;
+        }
+        
+        @media (min-width: 1024px) {
+            .mobile-menu-grid {
+                display: flex;
+                gap: 0;
+            }
+            
+            .mobile-menu-grid button:last-child {
+                grid-column: auto;
+            }
         }
     </style>
 </head>
@@ -220,7 +233,7 @@
     <div id="brochure-content">
         <!-- Logo para PDF (se muestra solo al descargar) -->
         <div class="pdf-logo">
-            <img src="/logo-conecta2.svg" alt="Conecta2.ai Logo">
+            <img src="./logo-conecta2.svg" alt="Conecta2.ai Logo">
         </div>
         
         <!-- Hero Section -->
@@ -234,7 +247,8 @@
                     <div class="w-full lg:w-auto">
                         <!-- LOGO CONECTA2.AI -->
                         <div class="logo-container no-print">
-                            <img src="/logo-conecta2.svg" alt="Conecta2.ai Logo" onerror="this.style.display='none'">
+                            <img src="./logo-conecta2.svg" alt="Conecta2.ai Logo" onerror="this.style.display='none'; document.getElementById('logo-fallback-hero').style.display='block';">
+                            <div id="logo-fallback-hero" class="logo-text" style="display: none;">Conecta2.ai</div>
                         </div>
                         
                         <div class="inline-block glass-card px-4 lg:px-6 py-2 rounded-full mb-6 pulse-badge shine-effect text-sm lg:text-base" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);">
@@ -283,24 +297,24 @@
             </div>
         </div>
         
-        <!-- Navigation Tabs -->
+        <!-- Navigation Tabs - MOBILE 2 ROWS (3 + 2) -->
         <div class="sticky top-0 z-50 no-print" style="background: linear-gradient(90deg, var(--azul-oscuro), var(--negro)); border-top: 1px solid rgba(16, 225, 92, 0.2); border-bottom: 1px solid rgba(16, 225, 92, 0.2); backdrop-filter: blur(10px);">
-            <div class="max-w-7xl mx-auto px-2 lg:px-6">
-                <div class="grid grid-cols-5 gap-1 lg:flex lg:space-x-8 lg:gap-0">
-                    <button onclick="showTab('overview')" class="tab-btn py-3 lg:py-6 px-1 lg:px-4 font-semibold transition-all border-b-4 border-transparent hover:border-opacity-50 text-xs lg:text-base" data-tab="overview" style="border-color: var(--verde-primario);">
+            <div class="max-w-7xl mx-auto px-2 lg:px-6 py-2 lg:py-0">
+                <div class="mobile-menu-grid lg:space-x-6">
+                    <button onclick="showTab('overview')" class="tab-btn py-3 lg:py-6 px-2 lg:px-4 font-semibold transition-all border-b-4 text-sm lg:text-base rounded-lg lg:rounded-none" data-tab="overview" style="border-color: var(--verde-primario); background: rgba(16, 225, 92, 0.1);">
                         Overview
                     </button>
-                    <button onclick="showTab('business')" class="tab-btn py-3 lg:py-6 px-1 lg:px-4 font-semibold transition-all border-b-4 border-transparent opacity-60 hover:opacity-100 text-xs lg:text-base" data-tab="business">
+                    <button onclick="showTab('business')" class="tab-btn py-3 lg:py-6 px-2 lg:px-4 font-semibold transition-all border-b-4 border-transparent opacity-60 hover:opacity-100 text-sm lg:text-base rounded-lg lg:rounded-none" data-tab="business">
                         Negocio
                     </button>
-                    <button onclick="showTab('features')" class="tab-btn py-3 lg:py-6 px-1 lg:px-4 font-semibold transition-all border-b-4 border-transparent opacity-60 hover:opacity-100 text-xs lg:text-base" data-tab="features">
+                    <button onclick="showTab('features')" class="tab-btn py-3 lg:py-6 px-2 lg:px-4 font-semibold transition-all border-b-4 border-transparent opacity-60 hover:opacity-100 text-sm lg:text-base rounded-lg lg:rounded-none" data-tab="features">
                         Plataforma
                     </button>
-                    <button onclick="showTab('pricing')" class="tab-btn py-3 lg:py-6 px-1 lg:px-4 font-semibold transition-all border-b-4 border-transparent opacity-60 hover:opacity-100 text-xs lg:text-base" data-tab="pricing">
+                    <button onclick="showTab('pricing')" class="tab-btn py-3 lg:py-6 px-2 lg:px-4 font-semibold transition-all border-b-4 border-transparent opacity-60 hover:opacity-100 text-sm lg:text-base rounded-lg lg:rounded-none" data-tab="pricing">
                         Inversión
                     </button>
-                    <button onclick="showTab('projections')" class="tab-btn py-3 lg:py-6 px-1 lg:px-4 font-semibold transition-all border-b-4 border-transparent opacity-60 hover:opacity-100 text-xs lg:text-base" data-tab="projections">
-                        Proyección
+                    <button onclick="showTab('projections')" class="tab-btn py-3 lg:py-6 px-2 lg:px-4 font-semibold transition-all border-b-4 border-transparent opacity-60 hover:opacity-100 text-sm lg:text-base rounded-lg lg:rounded-none" data-tab="projections">
+                        Proyecciones
                     </button>
                 </div>
             </div>
@@ -464,9 +478,6 @@
                                     <div class="text-4xl font-black mb-3" style="color: var(--verde-primario);">$3,999/mes</div>
                                     <div class="text-sm opacity-80">Hasta 15,000 minutos</div>
                                 </div>
-                            </div>
-                            <div class="text-center mt-6 p-4 rounded-lg" style="background: rgba(16, 225, 92, 0.1);">
-                                <p class="text-lg">💡 <strong>Tip:</strong> Muchos partners exitosos cobran por industria (Real Estate: $1,200, E-learning: $1,500, E-commerce: $2,000)</p>
                             </div>
                         </div>
                     </div>
@@ -666,7 +677,7 @@
                         <p class="text-2xl opacity-80">Basado en partners actuales exitosos</p>
                     </div>
                     
-                    <div class="grid md:grid-cols-4 gap-6">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                         <div class="glass-card rounded-2xl p-8 hover:scale-105 transition-transform">
                             <div class="text-lg font-semibold mb-4" style="color: var(--verde-agua);">Mes 1-3</div>
                             <div class="space-y-3">
@@ -799,14 +810,14 @@
         <div class="py-20 px-6 relative overflow-hidden">
             <div class="absolute inset-0 animated-bg"></div>
             <div class="relative max-w-5xl mx-auto text-center">
-                <h2 class="text-6xl font-black mb-6" style="color: var(--azul-oscuro);">
+                <h2 class="text-5xl md:text-6xl font-black mb-6" style="color: var(--azul-oscuro);">
                     ¿Listo para construir tu imperio de IA?
                 </h2>
                 <p class="text-2xl mb-10" style="color: var(--azul-oscuro); opacity: 0.8;">
                     Solo 15 spots de partner disponibles en Titanes 2025
                 </p>
-                <div class="flex justify-center space-x-6 mb-10">
-                    <button onclick="window.location.href='https://wa.me/573008853322?text=Hola!%20Quiero%20información%20sobre%20el%20Plan%20White%20Label%20de%20Titanes%202025'" class="btn-primary px-10 py-5 rounded-2xl font-bold text-xl flex items-center" style="color: var(--azul-oscuro);">
+                <div class="flex flex-col sm:flex-row justify-center gap-6 mb-10">
+                    <button onclick="window.location.href='https://wa.me/573008853322?text=Hola!%20Quiero%20información%20sobre%20el%20Plan%20White%20Label%20de%20Titanes%202025'" class="btn-primary px-10 py-5 rounded-2xl font-bold text-xl flex items-center justify-center" style="color: var(--azul-oscuro);">
                         👑 Aplicar Ahora
                         <span class="ml-3">→</span>
                     </button>
@@ -824,7 +835,6 @@
         </div>
     </div>
     
-    
     <script>
         // Tab switching functionality
         function showTab(tabName) {
@@ -838,12 +848,14 @@
                 btn.classList.remove('border-opacity-100');
                 btn.classList.add('opacity-60', 'border-transparent');
                 btn.style.borderColor = 'transparent';
+                btn.style.background = 'transparent';
             });
             
             const activeBtn = document.querySelector(`[data-tab="${tabName}"]`);
             activeBtn.classList.remove('opacity-60', 'border-transparent');
             activeBtn.classList.add('border-opacity-100');
             activeBtn.style.borderColor = 'var(--verde-primario)';
+            activeBtn.style.background = 'rgba(16, 225, 92, 0.1)';
         }
         
         // Animated counter on scroll
