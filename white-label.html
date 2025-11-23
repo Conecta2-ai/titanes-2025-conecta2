@@ -204,130 +204,6 @@
             max-height: 80px;
             width: auto;
         }
-        
-        /* ============================================ */
-        /* RESPONSIVE DESIGN - Mobile & Tablet */
-        /* ============================================ */
-        
-        /* Tablet */
-        @media (max-width: 1024px) {
-            .text-7xl { font-size: 3.5rem !important; }
-            .text-6xl { font-size: 2.75rem !important; }
-            .text-5xl { font-size: 2.25rem !important; }
-            .text-4xl { font-size: 1.875rem !important; }
-            .text-3xl { font-size: 1.5rem !important; }
-            .text-2xl { font-size: 1.25rem !important; }
-            
-            .p-12 { padding: 2rem !important; }
-            .p-10 { padding: 1.75rem !important; }
-            .p-8 { padding: 1.25rem !important; }
-            
-            .gap-8 { gap: 1.5rem !important; }
-            .gap-6 { gap: 1.25rem !important; }
-            
-            .grid-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-        }
-        
-        /* Mobile */
-        @media (max-width: 768px) {
-            body { font-size: 14px; }
-            
-            /* Typography scaling */
-            .text-7xl { font-size: 2.25rem !important; line-height: 1.2 !important; }
-            .text-6xl { font-size: 1.875rem !important; line-height: 1.2 !important; }
-            .text-5xl { font-size: 1.5rem !important; line-height: 1.3 !important; }
-            .text-4xl { font-size: 1.25rem !important; line-height: 1.3 !important; }
-            .text-3xl { font-size: 1.125rem !important; line-height: 1.4 !important; }
-            .text-2xl { font-size: 1rem !important; line-height: 1.4 !important; }
-            .text-xl { font-size: 0.95rem !important; line-height: 1.5 !important; }
-            .text-lg { font-size: 0.9rem !important; }
-            
-            /* Spacing adjustments */
-            .py-20 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
-            .py-16 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
-            .py-6 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
-            .px-10 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
-            .px-8 { padding-left: 1rem !important; padding-right: 1rem !important; }
-            .px-6 { padding-left: 1rem !important; padding-right: 1rem !important; }
-            .px-4 { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
-            .p-12 { padding: 1.5rem !important; }
-            .p-10 { padding: 1.25rem !important; }
-            .p-8 { padding: 1rem !important; }
-            .p-6 { padding: 0.75rem !important; }
-            
-            .mb-12 { margin-bottom: 2rem !important; }
-            .mb-10 { margin-bottom: 1.75rem !important; }
-            .mb-8 { margin-bottom: 1.5rem !important; }
-            .mb-6 { margin-bottom: 1rem !important; }
-            .mb-4 { margin-bottom: 0.75rem !important; }
-            .mb-3 { margin-bottom: 0.5rem !important; }
-            .mt-16 { margin-top: 2rem !important; }
-            .mt-12 { margin-top: 2rem !important; }
-            .mt-8 { margin-top: 1.5rem !important; }
-            
-            .gap-10 { gap: 1.5rem !important; }
-            .gap-8 { gap: 1.25rem !important; }
-            .gap-6 { gap: 1rem !important; }
-            
-            .space-y-8 > * + * { margin-top: 1.5rem !important; }
-            .space-y-6 > * + * { margin-top: 1rem !important; }
-            .space-y-4 > * + * { margin-top: 0.75rem !important; }
-            .space-y-3 > * + * { margin-top: 0.5rem !important; }
-            .space-x-8 > * + * { margin-left: 0.5rem !important; }
-            .space-x-6 > * + * { margin-left: 0.5rem !important; }
-            
-            .rounded-3xl { border-radius: 1.25rem !important; }
-            .rounded-2xl { border-radius: 1rem !important; }
-            
-            /* Grid adjustments */
-            .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
-            .grid-cols-3 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
-            .grid-cols-2 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
-            
-            /* Flex adjustments */
-            .flex-row { flex-direction: column !important; }
-            .justify-between { justify-content: flex-start !important; }
-            .items-start { align-items: flex-start !important; }
-            
-            /* Hero section mobile */
-            .floating { animation: none !important; transform: none !important; }
-            
-            /* Tab navigation mobile */
-            .tab-btn {
-                font-size: 0.7rem !important;
-                padding-left: 0.4rem !important;
-                padding-right: 0.4rem !important;
-            }
-            
-            .sticky { position: relative !important; }
-            
-            /* Button adjustments */
-            .btn-primary { font-size: 0.9rem !important; padding: 0.75rem 1.25rem !important; }
-            
-            /* Card hover effects disabled on mobile */
-            .glass-card:hover { transform: none !important; }
-            
-            /* Hide complex animations on mobile */
-            .shine-effect::after { display: none; }
-            
-            /* Logo sizing */
-            .logo-container img { max-height: 50px !important; }
-        }
-        
-        /* Small mobile */
-        @media (max-width: 480px) {
-            .text-7xl { font-size: 1.875rem !important; }
-            .text-6xl { font-size: 1.5rem !important; }
-            .text-5xl { font-size: 1.25rem !important; }
-            .text-4xl { font-size: 1.125rem !important; }
-            
-            .p-12, .p-10, .p-8 { padding: 1rem !important; }
-            .px-10, .px-8, .px-6 { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
-            
-            .tab-btn { font-size: 0.65rem !important; padding: 0.75rem 0.3rem !important; }
-            
-            .space-x-8 > * + * { margin-left: 0.25rem !important; }
-        }
     </style>
 </head>
 <body>
@@ -344,27 +220,27 @@
             
             <div class="relative max-w-7xl mx-auto">
                 <!-- Badge & Title -->
-                <div class="flex justify-between items-start mb-12">
-                    <div>
+                <div class="flex flex-col lg:flex-row justify-between items-start gap-8 mb-12">
+                    <div class="w-full lg:w-auto">
                         <!-- LOGO CONECTA2.AI -->
                         <div class="logo-container no-print">
-                            <img src="logo-conecta2.svg" alt="Conecta2.ai Logo">
+                            <img src="logo-conecta2.svg" alt="Conecta2.ai Logo" onerror="this.style.display='none'">
                         </div>
                         
-                        <div class="inline-block glass-card px-6 py-2 rounded-full mb-6 pulse-badge shine-effect" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);">
-                            <span class="text-sm font-bold" style="color: var(--azul-oscuro);">👑 PROGRAMA DE PARTNERS EXCLUSIVO</span>
+                        <div class="inline-block glass-card px-4 lg:px-6 py-2 rounded-full mb-6 pulse-badge shine-effect text-sm lg:text-base" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);">
+                            <span class="font-bold" style="color: var(--azul-oscuro);">👑 PROGRAMA DE PARTNERS EXCLUSIVO</span>
                         </div>
-                        <h1 class="text-7xl font-black mb-4">
+                        <h1 class="text-5xl lg:text-7xl font-black mb-4">
                             <span class="gradient-text">White Label</span>
                         </h1>
-                        <p class="text-3xl" style="color: var(--verde-agua);">Construye tu imperio de IA en 30 días</p>
+                        <p class="text-xl lg:text-3xl" style="color: var(--verde-agua);">Construye tu imperio de IA en 30 días</p>
                     </div>
                     
-                    <div class="text-right glass-card p-8 rounded-2xl floating">
-                        <div class="text-6xl font-black mb-2" style="color: var(--verde-primario);">
-                            $783<span class="text-2xl" style="color: var(--verde-agua);">/mes</span>
+                    <div class="w-full lg:w-auto text-center lg:text-right glass-card p-6 lg:p-8 rounded-2xl floating">
+                        <div class="text-5xl lg:text-6xl font-black mb-2" style="color: var(--verde-primario);">
+                            $783<span class="text-xl lg:text-2xl" style="color: var(--verde-agua);">/mes</span>
                         </div>
-                        <div class="text-lg line-through opacity-60 mb-3">$1,099/mes regular</div>
+                        <div class="text-base lg:text-lg line-through opacity-60 mb-3">$1,099/mes regular</div>
                         <div class="inline-block px-4 py-2 rounded-full text-sm font-bold" style="background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-primario)); color: var(--azul-oscuro);">
                             🚀 Ahorra 29%
                         </div>
@@ -372,7 +248,7 @@
                 </div>
                 
                 <!-- Quick Stats -->
-                <div class="grid grid-cols-4 gap-6 mt-16">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-16">
                     <div class="glass-card rounded-2xl p-8 text-center shine-effect">
                         <div class="text-5xl mb-3">∞</div>
                         <div class="text-5xl font-black mb-2 animate-count" style="color: var(--verde-primario);">∞</div>
@@ -929,7 +805,7 @@
                     </button>
                 </div>
                 <div class="text-lg mb-6" style="color: var(--azul-oscuro); opacity: 0.8;">
-                    📧 hola@conecta2.ai | 📱 +57 300 885 3322 | 🌐 www.conecta2.ai
+                    📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="137a7d757c53707c7d76706772213d727a">[email&#160;protected]</a> | 📱 +57 300 885 3322 | 🌐 www.conecta2.ai
                 </div>
                 <div class="inline-block px-8 py-3 rounded-full font-bold text-lg" style="background: #fbbf24; color: var(--azul-oscuro);">
                     ⚠️ Proceso de selección: No aceptamos a todos los aplicantes
@@ -938,7 +814,7 @@
         </div>
     </div>
     
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Tab switching functionality
         function showTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(tab => {
